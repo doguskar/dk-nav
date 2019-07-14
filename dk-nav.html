@@ -1,0 +1,139 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="assets/mayer-reset/css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="assets/fontawesome-free-5.9.0/css/all.min.css" />
+		<!--*****************************************************************-->
+		<link rel="stylesheet" type="text/css" href="css/dk-nav.css" />
+		<!--*****************************************************************-->
+		<style type="text/css">
+			header{
+				position:fixed;
+				left:0;
+				top:0;
+				width:100%;
+				z-index:999;
+				height:50px;
+				background:#fff;
+				box-shadow:rgba(0,0,0,0.3) 0px 0px 5px;
+			}
+			header i.fa{
+				font-size:32px;
+				line-height:1;
+				padding: 9px 20px;;
+				cursor:pointer;
+			}
+			article{
+				width:100%;
+				margin: 75px auto;
+				text-align:center;
+			}
+			@media only screen and (min-width: 768px) and (max-width: 1199px){
+				article{
+					padding-left: 120px;
+				}
+			}
+			@media only screen and (min-width: 1200px){
+				article{
+					padding-left: 320px;
+				}
+				article.dk-nav-cSt{
+					padding-left: 120px;
+				}
+			}
+			h1{
+				font-size:32px;
+			}
+			h2{
+				font-size:24px;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<i class="fa fa-bars" id="dk-navbtn"></i>
+		</header>
+		<nav id="dk-nav" class="dk-nav">
+			<div class="dk-nav-header">
+				<a href="#">
+					<img src="img/kardo.png" alt="Kardo"/>
+					<span class="header-sub">DkNavasdasdasdasd</span>					
+				</a>
+				<span class="dk-nav-header-btn"><i class="fa fa-chevron-left"></i></span>
+			</div>
+			<div class="dk-nav-sec">
+				<a href="javascript:;" class="dk-btn sharp-btn">Login</a>
+			</div>
+			<ul>
+				<li><a href="javascript:;"><i class="fa fa-home"></i><span>HomePage</span></a>
+					<ul>
+						<li><a href="javascript:;">sub link</a></li>
+						<li><a href="javascript:;">sub link</a></li>
+					</ul>
+				</li>
+				<li><a href="javascript:;"><i class="fa fa-home"></i><span>HomePage</span></a></li>
+				<li><a href="javascript:;"><i class="fa fa-home"></i><span>HomePage</span></a></li>
+				<li><a href="javascript:;"><i class="fa fa-home"></i><span>HomePageHomePageHomePageHomePageHomePageHomePageHomePageHomePage</span></a></li>
+			</ul>
+			<hr />
+			<ul>
+				<li><a href="javascript:;"><i class="fa fa-home"></i><span>HomePage</span></a></li>
+				<li><a href="javascript:;"><i class="fa fa-home"></i><span>HomePage</span></a></li>
+			</ul>
+			<div class="dk-nav-sec">
+				<a href="javascript:;" class="dk-btn round-btn"><i class="fab fa-facebook-f"></i></a>
+				<a href="javascript:;" class="dk-btn round-btn"><i class="fab fa-twitter"></i></a>
+				<a href="javascript:;" class="dk-btn round-btn"><i class="fab fa-twitch"></i></a>
+			</div>
+			<div class="dk-nav-footer">
+				<a href="#"><img src="img/kardo.png" alt="Kardo"/></a>
+				<div>Copyright © 2019</div>
+			</div>
+		</nav>
+		<article id="container">
+			<h1>Change Theme</h1>
+			<h2><a href="javascript:;" onclick="darkTheme()">Dark Theme</a></h2>
+			<h2><a href="javascript:;" onclick="colorfullTh()">Colorfull Theme</a></h2>
+			<h2><a href="javascript:;" onclick="darkColorfullTh()">Dark Colorfull Theme</a></h2>
+			<h2><a href="javascript:;" onclick="clearTheme()">Clear Theme</a></h2>
+		</article>
+		
+		<!--*****************************************************************-->
+		<script type="text/javascript" src="js/dk-nav.js"></script>
+		<script type="text/javascript">
+			dkNavigator({
+				id: "dk-nav",
+				navbtnId: "dk-navbtn",
+				navTop: 50,
+				articleId: "container"
+			});
+		</script>
+		<!--*****************************************************************-->
+		
+		<script type="text/javascript">
+			function darkTheme(){
+				document.getElementById("dk-nav").classList.remove("colorfull-theme")
+				document.getElementById("dk-nav").classList.remove("dark-colorfull-theme")
+				document.getElementById("dk-nav").classList.add("dark-theme")
+			}
+			function colorfullTh(){
+				document.getElementById("dk-nav").classList.remove("dark-theme")
+				document.getElementById("dk-nav").classList.remove("dark-colorfull-theme")
+				document.getElementById("dk-nav").classList.add("colorfull-theme")
+			}
+			function darkColorfullTh(){
+				document.getElementById("dk-nav").classList.remove("dark-theme")
+				document.getElementById("dk-nav").classList.remove("colorfull-theme")
+				document.getElementById("dk-nav").classList.add("dark-colorfull-theme")
+			}
+			function clearTheme(){
+				document.getElementById("dk-nav").classList.remove("dark-theme")
+				document.getElementById("dk-nav").classList.remove("colorfull-theme")
+				document.getElementById("dk-nav").classList.remove("dark-colorfull-theme")
+			}
+		</script>
+	</body>
+</html>
