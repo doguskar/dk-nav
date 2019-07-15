@@ -5,6 +5,7 @@ dkNavigator = function(e){
 		navTop: 0,
 		//articleId: "container",
 		//type: "advanced",
+		//theme: "dark-theme",
 		zIndex: 1000 // header's zIndex -1
 	}
 	//control nav id
@@ -29,19 +30,14 @@ dkNavigator = function(e){
 	if(navbarEle == undefined)
 			throw "error: navTop is not valid";
 	//control article section id
-	if(e.articleId != undefined)
-		if(typeof e.articleId != "string")
-			throw "error: articleId is not valid";
 	var articleEle = document.getElementById(e.articleId)
-	//control navTop
+	if(e.articleId != undefined && articleEle == undefined)
+			throw "error: articleId is not valid";
+	//control zIndex
 	if(e.zIndex != undefined)
 		if(typeof e.zIndex != "number")
 			throw "error: zIndex is not valid";
 	var navZIndex = (e.navTop == undefined)? dkNavDefs.zIndex: e.zIndex;
-	//control article section id
-	if(e.type != undefined)
-		if(typeof e.type != "string")
-			throw "error: articleId is not valid";
 
 	//create overlay
 	var dkNavOverlay = document.createElement("div");
@@ -57,6 +53,7 @@ dkNavigator = function(e){
 		navTop: navTopPx,
 		zIndex: navZIndex,
 		type: e.type,
+		theme: e.theme,
 		articleEl: articleEle,
 		navHeaderBtn: ele.getElementsByClassName("dk-nav-header-btn")[0],
 		toggleCSt(){
@@ -114,9 +111,10 @@ dkNavigator = function(e){
 		dkNav.overlayEle.classList.add(dkNav.type);
 	}else{
 		styleEl.innerHTML += ':root{--nav-top:0px;}\n';
-	}
-	document.head.appendChild(styleEl);
-		
+	}debugger
+	if(dkNav.theme != undefined)
+		dkNav.el.classList.add(dkNav.theme);
 	
+	document.head.appendChild(styleEl);
 	
 }
