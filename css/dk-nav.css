@@ -8,7 +8,7 @@
 	-moz-box-sizing:border-box;
 }
 :root{
-	--nav-top: 50px;
+	--nav-top: 0px;
 	--nav-ovelat-bg: rgba(0,0,0,0.2);
 	--trans-sc: 0.3s;
 	--nav-clr1: #f0f0f0;
@@ -25,6 +25,9 @@
 	--nav-clr11: #ffa132;
 	--nav-clr12: #6ed25d;
 	--nav-clr13: #8175c7;
+}
+:root .advanced{
+	--nav-top: 50px;
 }
 :root .dark-theme{
 	--nav-clr1: #1e1e1e;
@@ -61,9 +64,9 @@
 
 nav.dk-nav{
 	position:fixed;
-	z-index:998;
+	z-index:1001;
 	top:var(--nav-top);
-	left:0px;
+	left:-320px;
 	width:300px;
 	height:calc(100% - var(--nav-top));
 	background:var(--nav-clr1);
@@ -73,14 +76,24 @@ nav.dk-nav{
 	font-family:NotoSans-Regular;
 	transition: var(--trans-sc) left;
 }
+nav.dk-nav.advanced{
+	z-index:1000;
+	left:0px;
+}
+nav.dk-nav.cSt{
+	left:0px;
+}
 .dk-nav-overlay{
 	position:fixed;
-	z-index:997;
+	z-index:1000;
 	top:var(--nav-top);
 	height:calc(100% - var(--nav-top));
 	width:0%;
 	height:100%;
 	background:var(--nav-ovelat-bg);
+}
+.dk-nav-overlay.advanced{
+	z-index:1000;
 }
 nav.dk-nav ul li a{
 	display:block;
@@ -100,10 +113,10 @@ nav.dk-nav > ul > li:last-child > a{
 nav.dk-nav ul li a:link,nav.dk-nav ul li a:visited{
 	
 }
-nav.dk-nav ul li a:hover, nav.dk-nav ul li a:active{
+nav.dk-nav ul li a:hover, nav.dk-nav ul li a:active, nav.dk-nav > ul > li.active > a{
 	background-color:var(--nav-clr2);
 }
-nav.dk-nav ul li a:hover i, nav.dk-nav ul li a:active i{
+nav.dk-nav ul li a:hover i, nav.dk-nav ul li a:active i, nav.dk-nav > ul > li.active > a > i{
 	color:var(--nav-clr8);
 }
 nav.dk-nav ul li a i{
@@ -125,50 +138,50 @@ nav.dk-nav ul li a span::after{
 	clear:both;
 }
 @media only screen and (max-width: 767px){
-	:root{
+	:root .advanced{
 		--nav-top: 0px;
 	}
-	nav.dk-nav{
+	nav.dk-nav.advanced{
 		left:-320px;
 	}
 	/* Change State */
-	.dk-nav-overlay.cSt{
-		width:100%;
-	}
 	nav.dk-nav.cSt{
 		left:0px;
 	}
+	.dk-nav-overlay.cSt{
+		width:100%;
+	}
 }
 @media only screen and (min-width: 768px) and (max-width: 1199px){
-	nav.dk-nav{
+	nav.dk-nav.advanced{
 		width:100px;
 	}
-	nav.dk-nav ul li.dk-nav-nested{
+	nav.dk-nav.advanced ul li.dk-nav-nested{
 		display:none;
 	}
-	nav.dk-nav ul li a{
+	nav.dk-nav.advanced ul li a{
 		padding:10px 10px 26px 10px;
 		text-align:center;
 	}
-	nav.dk-nav ul li a i{
+	nav.dk-nav.advanced ul li a i{
 		font-size:36px;
 		width:100%;
 		margin-bottom:5px;
 	}
-	nav.dk-nav ul li a span{
+	nav.dk-nav.advanced ul li a span{
 		font-size:12px;
 		line-height:16px;
 		padding:0px;
 		width:100%;
 	}
-	nav.dk-nav .dk-nav-header, nav.dk-nav .dk-nav-footer, nav.dk-nav .dk-nav-sec{
+	nav.dk-nav.advanced .dk-nav-header, nav.dk-nav.advanced .dk-nav-footer, nav.dk-nav.advanced .dk-nav-sec{
 		display:none;
 	}
 	/* Change State */
 	.dk-nav-overlay.cSt{
 		width:100%;
 	}
-	nav.dk-nav.cSt{
+	nav.dk-nav.cSt{/**/
 		width:300px;
 	}
 	nav.dk-nav.cSt ul li.dk-nav-nested{
@@ -194,39 +207,63 @@ nav.dk-nav ul li a span::after{
 	}
 }
 @media only screen and (min-width: 1200px){
+	/* Change State */
+	.dk-nav-overlay.cSt{
+		width:100%;
+	}
+	.dk-nav-overlay.advanced.cSt{
+		width:0;
+	}
 	nav.dk-nav.cSt{
+		left:0px;
+	}
+	/* advanced */
+	nav.dk-nav.advanced.cSt{
 		width:100px;
 	}
-	nav.dk-nav.cSt ul li.dk-nav-nested{
+	nav.dk-nav.advanced.cSt ul li.dk-nav-nested{
 		display:none;
 	}
-	nav.dk-nav.cSt ul li a{
+	nav.dk-nav.advanced.cSt ul li a{
 		display:block;
 		padding:10px 10px 26px 10px;
 		text-align:center;
 	}
-	nav.dk-nav.cSt ul li a i{
+	nav.dk-nav.advanced.cSt ul li a i{
 		font-size:36px;
 		width:100%;
 		margin-bottom:5px;
 	}
-	nav.dk-nav.cSt ul li a span{
+	nav.dk-nav.advanced.cSt ul li a span{
 		font-size:12px;
 		line-height:16px;
 		padding:0px;
 		width:100%;
 	}
-	nav.dk-nav.cSt .dk-nav-header, nav.dk-nav.cSt .dk-nav-footer, nav.dk-nav.cSt .dk-nav-sec{
+	nav.dk-nav.advanced.cSt .dk-nav-header, nav.dk-nav.advanced.cSt .dk-nav-footer, nav.dk-nav.advanced.cSt .dk-nav-sec{
 		display:none;
 	}
 }
 
 /** Sub links **/
 nav.dk-nav > ul > li.dk-nav-nested > a{
-	background-image:url(../img/nav-plus.png);
+	/*background-image:url(../img/nav-plus.png);
 	background-repeat:no-repeat;
 	background-position:calc(100% - 20px) 10px;
-	transition: 0s background-image;
+	transition: 0s background-image;*/
+}
+nav.dk-nav > ul > li.dk-nav-nested > a:after{
+    content: '\002B';
+	position:absolute;
+	right:20px;
+	top:0;
+	padding:13px 0px;
+    font-weight: bold;
+	font-size:20px;
+	color:var(--nav-clr5)
+}
+nav.dk-nav > ul > li.dk-nav-nested.active > a:after{
+    content: '\2212';
 }
 nav.dk-nav ul li ul li a{
 	font-size:16px;
@@ -240,14 +277,14 @@ nav.dk-nav ul li ul li a:hover, nav.dk-nav ul li ul li a:active{
 	background-color:var(--nav-clr4);
 }
 nav.dk-nav ul li ul{
-	height:0;
+	max-height:0;
 	opacity:0;
     overflow: hidden;
 	z-index:-1;
-    transition: all var(--trans-sc) ease;
+    transition: var(--trans-sc);
 }
 nav.dk-nav ul li ul.active{
-	height:auto;
+	/*max-height:auto;*/
 	opacity:1;
 	z-index:1;
 }
@@ -362,6 +399,39 @@ nav.dk-nav .dk-nav-sec{
 	transform: rotate(360deg);
 	border-color:var(--nav-clr3);
 }
+.dk-nav-sec a.dk-nav-user{
+	text-decoration:none;
+	display:inline-block;
+}
+.dk-nav-sec a.dk-nav-user:hover span{
+	color:var(--nav-clr45);
+	transition:var(--trans-sc) color;
+}
+.dk-nav-sec a.dk-nav-user img{
+	height:40px;
+	width:40px;
+	border-radius:100%;
+	float:left;
+}
+.dk-nav-sec a.dk-nav-user span{
+	float:left;
+	font-size:18px;
+	font-weight:bold;
+	padding:11px 5px;
+	color:var(--nav-clr8);
+	/*...*/
+	max-width:200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.dk-nav-sec a.dk-nav-user::after{
+	content:"";
+	clear:both;
+	display: table;
+}
+
+
 /** scrool bar **/
 nav.dk-nav::-webkit-scrollbar {
   width: 3px;
